@@ -12,6 +12,7 @@ import { CargaJornada } from "../pages/CargaJornada/CargaJornada";
 import { VerEmpleado } from "../pages/VerEmpleado/VerEmpleado";
 import { VerTurnos } from "../pages/VerTurnos/VerTurnos";
 import { Home } from "../Home";
+import { Login } from "../pages/Login/Login";
 
 
 
@@ -43,6 +44,9 @@ export default function AppRouter() {
           </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
           </Route>
           <Redirect to="/" />
         </Switch>
