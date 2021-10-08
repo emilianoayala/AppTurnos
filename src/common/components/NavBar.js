@@ -1,36 +1,29 @@
 import React from 'react'
 import {
-    Link
+    Link,
+    NavLink
   } from "react-router-dom";
 
 
 export const NavBar = () => {
     return (
         <div>
-            <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/AltaEmpleado">Alta Empleado</Link>
-            </li>
-            <li>
-              <Link to="/AltaTipoJornada">Alta Tipo Jornada</Link>
-            </li>
-            <li>
-              <Link to="/CargaJornada">Carga Jornada</Link>
-            </li>
-            <li>
-              <Link to="/VerEmpleado">Ver Empleado</Link>
-            </li>
-            <li>
-              <Link to="/VerTurnos">Ver Turnos</Link>
-            </li>
-          </ul>
-        </nav>
 
-    
-        </div>
+
+<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <Link to="/" className="navbar-brand">Home</Link>
+  <div className="container-fluid">
+    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div className="navbar-nav">
+        <NavLink exact activeClassName="active" to="/AltaEmpleado" className="nav-link">AltaEmpleado</NavLink>
+        <NavLink exact activeClassName="active" to="/AltaTipoJornada" className="nav-link">AltaTipoJornada</NavLink>
+        <NavLink exact activeClassName="active" to="CargaJornada" className="nav-link">CargaJornada</NavLink>
+        <NavLink exact activeClassName="active" to="VerEmpleado" className="nav-link">VerEmpleado</NavLink>
+        <NavLink exact activeClassName="active" to="VerTurno" className="nav-link">VerTurno</NavLink>
+      </div>
+    </div>
+  </div>
+</nav>
+       </div>
     )
 }

@@ -3,7 +3,8 @@ import {BrowserRouter as Router} from "react-router-dom";
 import { NavBar } from "../common/components/NavBar";
 import {
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import { AltaEmpleado } from "../pages/AltaEmpleado/AltaEmpleado";
 import { AltatipoJornada } from "../pages/AltaTipoJornada/AltatipoJornada";
@@ -43,6 +44,7 @@ export default function AppRouter() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Redirect to="/" />
         </Switch>
     
      
