@@ -15,9 +15,7 @@ export const Login = ( {history} ) => {
       <div className="row">
         <div className="col-lg-3 col-md-2"></div>
         <div className="col-lg-6 col-md-8 login-box">
-          <div className="col-lg-12 login-key">
-            <i className="fa fa-key" aria-hidden="true"></i>
-          </div>
+          
           <div className="col-lg-12 login-title">Log In</div>
 
           <div className="col-lg-12 login-form">
