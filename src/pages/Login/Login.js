@@ -1,7 +1,15 @@
 import React from "react";
 import "./Login.css";
 
-export const Login = () => {
+export const Login = ( {history} ) => {
+
+  const handleLogin = ( e ) => {
+    e.preventDefault();
+    history.push("/");
+  }
+
+
+
   return (
     <div className="container">
       <div className="row">
@@ -10,7 +18,7 @@ export const Login = () => {
           <div className="col-lg-12 login-key">
             <i className="fa fa-key" aria-hidden="true"></i>
           </div>
-          <div className="col-lg-12 login-title">LogIn</div>
+          <div className="col-lg-12 login-title">Log In</div>
 
           <div className="col-lg-12 login-form">
             <div className="col-lg-12 login-form">
@@ -29,7 +37,7 @@ export const Login = () => {
                     {/* <!-- Error Message --> */}
                   </div>
                   <div className="col-lg-6 login-btm login-button">
-                    <button type="submit" className="btn btn-outline-primary">
+                    <button className="btn btn-outline-primary" onClick={ handleLogin }>
                       LOGIN
                     </button>
                   </div>

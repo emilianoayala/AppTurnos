@@ -1,58 +1,17 @@
 import React from "react";
-import {BrowserRouter as Router} from "react-router-dom";
-import { NavBar } from "../common/components/NavBar";
-import {
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-import { AltaEmpleado } from "../pages/AltaEmpleado/AltaEmpleado";
-import { AltatipoJornada } from "../pages/AltaTipoJornada/AltatipoJornada";
-import { CargaJornada } from "../pages/CargaJornada/CargaJornada";
-import { VerEmpleado } from "../pages/VerEmpleado/VerEmpleado";
-import { VerTurnos } from "../pages/VerTurnos/VerTurnos";
-import { Home } from "../Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Login } from "../pages/Login/Login";
-
-
+import { Dashboard } from "./Dashboard";
 
 export default function AppRouter() {
   return (
     <Router>
-     
-       
-       <NavBar />
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-
-<Switch>
-          <Route exact path="/AltaEmpleado">
-            <AltaEmpleado />
-          </Route>
-          <Route exact path="/AltaTipoJornada">
-            <AltatipoJornada />
-          </Route>
-          <Route exact path="/CargaJornada">
-            <CargaJornada />
-          </Route>
-          <Route exact path="/VerEmpleado">
-            <VerEmpleado />
-          </Route>
-          <Route exact path="/VerTurnos">
-            <VerTurnos />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/Login">
-            <Login />
-          </Route>
-          <Redirect to="/" />
+      <div>
+        <Switch>
+        <Route exact path="/login" component={Login}></Route>
+                    <Route path="/" component={Dashboard}></Route>
         </Switch>
-    
-     
+      </div>
     </Router>
   );
 }
-

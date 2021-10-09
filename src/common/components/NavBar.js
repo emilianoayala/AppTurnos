@@ -19,8 +19,8 @@ export const NavBar = () => {
         <NavLink exact activeClassName="active" to="/AltaTipoJornada" className="nav-link">AltaTipoJornada</NavLink>
         <NavLink exact activeClassName="active" to="/CargaJornada" className="nav-link">CargaJornada</NavLink>
         <NavLink exact activeClassName="active" to="/VerEmpleado" className="nav-link">VerEmpleado</NavLink>
-        <NavLink exact activeClassName="active" to="/VerTurno" className="nav-link">VerTurno</NavLink>
-        <NavLink exact activeClassName="active" to="/Login" className="nav-link">LogIn</NavLink>
+        <NavLink exact activeClassName="active" to="/VerTurnos" className="nav-link">VerTurnos</NavLink>
+        <NavLink exact activeClassName="active" to="/Login" className="nav-link">LogOut</NavLink>
       </div>
     </div>
   </div>
