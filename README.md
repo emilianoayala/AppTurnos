@@ -78,5 +78,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Usuario y contraseña de la cuenta ADMIN
  "userName":admin,
     "email":admin@prueba.com,
-    "password":123456,
-    
+    "password":123456
+	
+
+### Se utilizó la librería Bcrypt para encriptar las contraseñas
+	documentacion:
+	
+	https://www.npmjs.com/package/bcrypt
+	
+	
+### Librería utilizada para generar las tokens de usuario
+ Jason Web Token
+ 
+ https://jwt.io/
