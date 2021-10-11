@@ -74,3 +74,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
  Me basé en esta estructura para el proyecto:
  https://dev.to/knitesh/react-project-folder-structure-30cm
+ 
+### Usuario y contraseña de la cuenta ADMIN
+ "userName":admin,
+    "email":admin@prueba.com,
+    "password":123456,
+    
