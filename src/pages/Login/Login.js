@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../auth/AuthContext";
 import { types } from "../../types/types";
 import "./Login.css";
@@ -7,13 +7,19 @@ export const Login = ( {history} ) => {
 
   const {dispatch} = useContext(AuthContext);
 
+  const [userName, setuserName] = useState();
+
+  const [password, setPassword] = useState();
+
   const handleLogin = ( e ) => {
+
     e.preventDefault();
+    console.log(userName, password)
     history.replace("/");
     dispatch({
       type: types.login,
       payload: {
-        userName:'Emiliano',
+        userName: userName ,
         isAdmin: true,
         logged: true
       }
@@ -35,11 +41,13 @@ export const Login = ( {history} ) => {
               <form>
                 <div className="form-group">
                   <label className="form-control-label">USERNAME</label>
-                  <input type="text" className="form-control"></input>
+                  <input type="text" className="form-control" 
+                  onChange={(event)=>setuserName(event.target.value)}></input>
                 </div>
                 <div className="form-group">
                   <label className="form-control-label">PASSWORD</label>
-                  <input type="password" className="form-control" ></input>
+                  <input type="password" className="form-control" 
+                  onChange={(event)=>setPassword(event.target.value)}></input>
                 </div>
 
                 <div className="col-lg-12 loginbttm">
