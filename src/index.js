@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import  AppRouter from './Routers/AppRouter';
+import { MainApp } from './MainApp';
+
 
 
 
 ReactDOM.render(
 
-    <AppRouter />,
+    <MainApp />,
   document.getElementById('root')
 );
 

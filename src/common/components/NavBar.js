@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Link,
     NavLink
   } from "react-router-dom";
+import { AuthContext } from '../../auth/AuthContext';
 
 
 export const NavBar = () => {
+
+    const { user:{userName} } = useContext(AuthContext);
+
     return (
         <div>
 
@@ -20,6 +24,8 @@ export const NavBar = () => {
         <NavLink exact activeClassName="active" to="/CargaJornada" className="nav-link">CargaJornada</NavLink>
         <NavLink exact activeClassName="active" to="/VerEmpleado" className="nav-link">VerEmpleado</NavLink>
         <NavLink exact activeClassName="active" to="/VerTurnos" className="nav-link">VerTurnos</NavLink>
+        <span>0000000</span>
+        <span  className="nav-link">{userName}</span>
         <NavLink exact activeClassName="active" to="/Login" className="nav-link">LogOut</NavLink>
       </div>
     </div>
