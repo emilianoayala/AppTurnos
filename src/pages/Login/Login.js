@@ -16,7 +16,7 @@ export const Login = ({ history }) => {
     e.preventDefault();
 
     if(userName.length == 0 || password.length == 0){
-      Swal.fire('Campos Obligatorios', "Los campos no pueden estar en blanco.", 'warning');
+      Swal.fire('Campos Obligatorios', "Los campos no pueden estar vacíos.", 'warning');
       return;
   }
     
