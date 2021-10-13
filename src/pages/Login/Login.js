@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../auth/AuthContext";
 import { fetchSinToken } from "../../common/helpers/fetch";
 import { types } from "../../types/types";
@@ -13,6 +14,12 @@ export const Login = ({ history }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if(userName.length == 0 || password.length == 0){
+      Swal.fire('Campos Obligatorios', "Los campos no pueden estar en blanco.", 'warning');
+      return;
+  }
+    
     const respuesta = await fetchSinToken(
       "auth/login",
       { userName, password },
@@ -34,7 +41,10 @@ export const Login = ({ history }) => {
         type: types.login,
         payload: user,
       });
-    }s
+    } else {
+      Swal.fire('Error', body.msg, 'error');
+
+    }
   };
 
   return (
