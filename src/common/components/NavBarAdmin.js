@@ -35,14 +35,7 @@ export const NavBarAdmin = () => {
               >
                 AltaEmpleado
               </NavLink>
-              <NavLink
-                exact
-                activeClassName="active"
-                to="/CargaJornada"
-                className="nav-link"
-              >
-                CargaJornada
-              </NavLink>
+
               <NavLink
                 exact
                 activeClassName="active"

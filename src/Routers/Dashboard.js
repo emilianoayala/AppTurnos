@@ -15,32 +15,27 @@ export const Dashboard = () => {
   const { user } = useContext(AuthContext);
   return (
     <>
+      {user.isAdmin ? <NavBarAdmin /> : <NavBar />}
 
-      {user.isAdmin ? <NavBarAdmin/> : <NavBar/>}
-      
-      {user.isAdmin ? <Switch rutasdelAdmin></Switch> : <Switch rutasDelUsuario></Switch>}
-      
-      
-
-      <div>
-        {/* switch para usuarios */}
-        <Switch rutasDelUsuario>
-        <Route exact path="/AltaEmpleado" component={AltaEmpleado}></Route>
-          <Route
-            exact
-            path="/AltaTipoJornada"
-            component={AltatipoJornada}
-          ></Route>
+      {user.isAdmin ? (
+        <Switch>
+          <Route exact path="/AltaTipoJornada" component={AltatipoJornada}></Route>
+          <Route exact path="/AltaEmpleado" component={AltaEmpleado}></Route>
           <Route exact path="/VerEmpleado" component={VerEmpleado}></Route>
-          <Route exact path="/CargaJornada" component={CargaJornada}></Route>
           <Route exact path="/VerTurnos" component={VerTurnos}></Route>
           <Route exact path="/" component={Home}></Route>
-          <Route exact path="/Login" component={Login}>
-          </Route>
-          <Redirect to="/" />
+          {/* <Route exact path="/Login" component={Login}></Route> */}
+          {/* <Redirect to="/" /> */}
         </Switch>
-        </div>
-        {/* Switch para Admins */}
+      ) : (
+        <Switch>
+          <Route exact path="/CargaJornada" component={CargaJornada}></Route>
+          {/* <Route exact path="/Login" component={Login}></Route> */}
+          <Route exact path="/" component={Home}></Route>
+          {/* <Redirect to="/" /> */}
+        </Switch>
+      )}
+
     </>
   );
 };

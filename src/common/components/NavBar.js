@@ -27,14 +27,7 @@ export const NavBar = () => {
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <NavLink
-                exact
-                activeClassName="active"
-                to="/AltaTipoJornada"
-                className="nav-link"
-              >
-                AltaTipoJornada
-              </NavLink>
+    
               <NavLink
                 exact
                 activeClassName="active"
