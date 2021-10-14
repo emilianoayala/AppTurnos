@@ -4,8 +4,6 @@ import './index.css';
 import { MainApp } from './MainApp';
 
 
-console.log(process.env)
-
 
 
 ReactDOM.render(

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavBar } from "../common/components/NavBar";
+import { NavBarAdmin } from "../common/components/NavBarAdmin";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
 import { AltaEmpleado } from "../pages/AltaEmpleado/AltaEmpleado";
 import { AltatipoJornada } from "../pages/AltaTipoJornada/AltatipoJornada";
 import { CargaJornada } from "../pages/CargaJornada/CargaJornada";
@@ -10,27 +12,35 @@ import { Home } from "../pages/Home/Home";
 import { Login } from "../pages/Login/Login";
 
 export const Dashboard = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
-      <NavBar />
+
+      {user.isAdmin ? <NavBarAdmin/> : <NavBar/>}
+      
+      {user.isAdmin ? <Switch rutasdelAdmin></Switch> : <Switch rutasDelUsuario></Switch>}
+      
+      
 
       <div>
-        <Switch>
-          <Route exact path="/AltaEmpleado" component={AltaEmpleado}></Route>
+        {/* switch para usuarios */}
+        <Switch rutasDelUsuario>
+        <Route exact path="/AltaEmpleado" component={AltaEmpleado}></Route>
           <Route
             exact
             path="/AltaTipoJornada"
             component={AltatipoJornada}
           ></Route>
-          <Route exact path="/CargaJornada" component={CargaJornada}></Route>
           <Route exact path="/VerEmpleado" component={VerEmpleado}></Route>
+          <Route exact path="/CargaJornada" component={CargaJornada}></Route>
           <Route exact path="/VerTurnos" component={VerTurnos}></Route>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/Login" component={Login}>
           </Route>
           <Redirect to="/" />
         </Switch>
-      </div>
+        </div>
+        {/* Switch para Admins */}
     </>
   );
 };

@@ -3,7 +3,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 import { types } from "../../types/types";
 
-export const NavBar = () => {
+export const NavBarAdmin = () => {
   const {
     user: { userName },
     dispatch,
@@ -30,10 +30,10 @@ export const NavBar = () => {
               <NavLink
                 exact
                 activeClassName="active"
-                to="/AltaTipoJornada"
+                to="/AltaEmpleado"
                 className="nav-link"
               >
-                AltaTipoJornada
+                AltaEmpleado
               </NavLink>
               <NavLink
                 exact
@@ -42,6 +42,22 @@ export const NavBar = () => {
                 className="nav-link"
               >
                 CargaJornada
+              </NavLink>
+              <NavLink
+                exact
+                activeClassName="active"
+                to="/VerEmpleado"
+                className="nav-link"
+              >
+                VerEmpleado
+              </NavLink>
+              <NavLink
+                exact
+                activeClassName="active"
+                to="/VerTurnos"
+                className="nav-link"
+              >
+                VerTurnos
               </NavLink>
               <span>0000000</span>
               <span className="nav-link">{userName}</span>

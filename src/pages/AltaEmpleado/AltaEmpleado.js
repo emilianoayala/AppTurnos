@@ -1,12 +1,11 @@
-import React, { useContext, useState }from "react";
+import React, { useState }from "react";
 import Swal from "sweetalert2";
 import { fetchSinToken } from "../../common/helpers/fetch";
-import { AuthContext } from "../../auth/AuthContext";
 import "./AltaEmpleado.css";
 
 export const AltaEmpleado = ({}) => {
 
-  const { dispatch } = useContext(AuthContext);
+ 
 
 
 const [userName, setuserName] = useState();
