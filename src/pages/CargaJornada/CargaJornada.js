@@ -1,51 +1,77 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DateTimePicker from "react-datetime-picker";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../auth/AuthContext";
 import { fetchSinToken } from "../../common/helpers/fetch";
 
 export const CargaJornada = () => {
 
-  const [tipos, setTipos] = useState ([]);
+  const [tipos, setTipos] = useState([]);
 
-  const [tipoUsuario, setTipoUsuario] = useState ("");
+  const [tipoUsuario, setTipoUsuario] = useState("");
 
-  const [inicio, setInicio] = useState("");
+  const [fechaInicio, setInicio] = useState("");
 
-  const [fin, setFin] = useState("");
+  const [fechaFin, setFin] = useState("");
 
-  useEffect( ()=> {
+  const { user } = useContext(AuthContext);
+  const [tipoJornada, settipoJornada] = useState("")
+
+  useEffect(() => {
     getTipos();
   }, [])
 
 
 
-  const getTipos = async (e) =>{
+
+
+  const getTipos = async (e) => {
 
     const respuesta = await fetchSinToken(
       "tipoJornada/getTipos",
-      { },
+      {},
       "GET"
     );
 
     const body = await respuesta.json();
-    if(body.ok){
+    if (body.ok) {
       const oTipos = body.tipos.map(elem => {
-          return {
-              id: elem._id,
-              tipo: elem.tipoJornada
-          }
+        return {
+          id: elem._id,
+          tipo: elem.tipoJornada
+        }
       })
 
-      setTipos(oTipos); 
-      if(oTipos.length > 0)
-          setTipoUsuario(oTipos[0].tipo);
-  }
+      setTipos(oTipos);
+      if (oTipos.length > 0)
+        settipoJornada(oTipos[0].tipo);
+    }
 
   }
 
+  const handleAltaJornada = async (e) => {
+    e.preventDefault();
 
+    const uid = user.uid;
 
+    const respuesta = await fetchSinToken(
+      "jornada/newJornada",
+      { fechaInicio, fechaFin, uid, tipoJornada },
+      "POST"
+    );
 
+    const body = await respuesta.json();
+    if (body.ok) {
+      Swal.fire('Exito', "Registrado correctamente", "success");
 
+    }
+    else {
+      Swal.fire('Error', body.msg, 'error');
+      console.log(body.msg)
+
+    }
+
+  }
 
   return (
     <div>
@@ -62,15 +88,15 @@ export const CargaJornada = () => {
                     <label className="form-control-label">
                       Tipo de jornada
                     </label>
-                    <select className="form-control" name="cars" id="cars">
+                    <select onChange={(event) => settipoJornada(event.target.value)} className="form-control" name="cars" id="cars">
                       {
-                        tipos.map(elem=>{
+                        tipos.map(elem => {
                           return <option key={elem.id} value={elem.tipo}>{elem.tipo}</option>
 
                         })
                       }
 
-</select>
+                    </select>
                     {/* <input type="text" className="form-control" value={} onChange={() => setuserName(event.target.value)}></input> */}
                   </div>
                   <div className="form-group">
@@ -79,7 +105,7 @@ export const CargaJornada = () => {
                     </label>
                     <DateTimePicker className="form-control"
                       onChange={(event) => setInicio(event)}
-                      value={inicio} //valor??//
+                      value={fechaInicio} 
                     />
                   </div>
                   <div className="form-group">
@@ -88,7 +114,7 @@ export const CargaJornada = () => {
                     </label>
                     <DateTimePicker className="form-control"
                       onChange={(event) => setFin(event)}
-                      value={fin}
+                      value={fechaFin}
                     />
                   </div>
 
@@ -97,7 +123,7 @@ export const CargaJornada = () => {
                       {/* <!-- Error Message --> */}
                     </div>
                     <div className="col-lg-6 login-btm login-button">
-                      {/* <button className="btn btn-outline-primary" onClick={handleRegister}>Submit</button> */}
+                      <button className="btn btn-outline-primary" onClick={handleAltaJornada}>Submit</button>
                     </div>
                   </div>
                 </form>
@@ -109,4 +135,4 @@ export const CargaJornada = () => {
       </div>
     </div>
   );
-};
+}

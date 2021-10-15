@@ -15,11 +15,11 @@ export const Login = ({ history }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if(userName.length == 0 || password.length == 0){
+    if (userName.length == 0 || password.length == 0) {
       Swal.fire('Campos Obligatorios', "Los campos no pueden estar vacíos.", 'warning');
       return;
-  }
-    
+    }
+
     const respuesta = await fetchSinToken(
       "auth/login",
       { userName, password },
